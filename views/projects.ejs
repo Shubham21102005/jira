@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="brand">Projects</div>
+            <div>
+                <a class="btn secondary" href="/">Home</a>
+                <a class="btn" href="/issues/new">Create issue</a>
+            </div>
+        </div>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Name</th><th>Key</th><th>Type</th></tr>
+                </thead>
+                <tbody>
+                    <% (projects || []).forEach(p => { %>
+                        <tr>
+                            <td><%= p.name %></td>
+                            <td><%= p.key %></td>
+                            <td><%= p.projectTypeKey %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">Connected via Atlassian OAuth</div>
+    </div>
+</body>
+</html>
+

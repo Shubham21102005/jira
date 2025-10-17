@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Issue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="brand">Create Issue</div>
+            <div>
+                <a class="btn secondary" href="/">Home</a>
+                <a class="btn secondary" href="/projects">Projects</a>
+            </div>
+        </div>
+        <% if (error) { %>
+            <div class="card error"><%= error %></div>
+        <% } %>
+        <div class="card">
+            <form method="post" action="/issues">
+                <div class="grid">
+                    <div class="col-6 col-12">
+                        <label for="projectKey">Project</label>
+                        <select id="projectKey" name="projectKey" required>
+                            <% (projects || []).forEach(p => { %>
+                                <option value="<%= p.key %>"><%= p.name %> (<%= p.key %>)</option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="col-6 col-12">
+                        <label for="issueType">Issue Type</label>
+                        <select id="issueType" name="issueType">
+                            <option>Task</option>
+                            <option>Bug</option>
+                            <option>Story</option>
+                            <option>Epic</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="summary">Summary</label>
+                        <input id="summary" name="summary" placeholder="Quick summary..." required />
+                    </div>
+                    <div class="col-12">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="6" placeholder="Describe the issue..."></textarea>
+                    </div>
+                </div>
+                <div style="margin-top:1rem; display:flex; gap:.75rem;">
+                    <button class="btn" type="submit">Create</button>
+                    <a class="btn secondary" href="/projects">Cancel</a>
+                </div>
+            </form>
+        </div>
+        <div class="footer">ADF description supported</div>
+    </div>
+</body>
+</html>
+

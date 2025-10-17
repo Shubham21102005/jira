@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jira Integration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="brand">Jira Integration</div>
+            <% if (isConnected) { %>
+                <div>
+                    <a class="btn secondary" href="/projects">Projects</a>
+                    <a class="btn secondary" href="/issues/new">Create issue</a>
+                    <a class="btn secondary" href="/logout">Logout</a>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="card hero">
+            <div>
+                <h1>Connect your Jira, create issues in seconds</h1>
+                <p class="muted">OAuth 2.0 + ADF issue creation. Simple demo app with clean, modern UI.</p>
+                <div style="margin-top:1rem;">
+                    <% if (!isConnected) { %>
+                        <a class="btn" href="/connect">Connect Jira</a>
+                    <% } else { %>
+                        <a class="btn" href="/issues/new">Create an issue</a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="card" style="background:rgba(255,255,255,.03);">
+                <div class="muted">What can you do?</div>
+                <ul>
+                    <li>Authorize with Atlassian OAuth</li>
+                    <li>Browse your projects</li>
+                    <li>Create Jira issues with rich descriptions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">Built with Express + EJS</div>
+    </div>
+</body>
+</html>
+
